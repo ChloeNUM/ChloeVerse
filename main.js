@@ -2014,7 +2014,7 @@ cancelSearch.addEventListener('click', () => {
 
 // initialize lazy loader
 function initLazyLoader(root = document) {
-    if (LOCAL_MODE) return;
+    // if (LOCAL_MODE) return;
 
     const images = root.querySelectorAll('img[src]:not([data-lazy-processed])');
 
@@ -2033,9 +2033,11 @@ function initLazyLoader(root = document) {
         }
 
         // convert relative path to CDN path
+        /*
         const finalSrc = originalSrc.startsWith('http')
             ? originalSrc
             : LAZY_BASE + originalSrc;
+            */
 
         const finalSrc = originalSrc;
 
@@ -2044,7 +2046,7 @@ function initLazyLoader(root = document) {
         img.dataset.lazyProcessed = "true";
         if (root == detailView) img.dataset.lazyRoot = "detailView";
 
-        img.style.transition = "opacity 0.4s ease";
+        // img.style.transition = "opacity 0.4s ease";
     });
 
     observeLazyImages();
@@ -2053,7 +2055,7 @@ function initLazyLoader(root = document) {
 // lazy observer handler
 let lazyObserver;
 function observeLazyImages() {
-    if (LOCAL_MODE) return;
+    // if (LOCAL_MODE) return;
 
     if (!lazyObserver) {
         lazyObserver = new IntersectionObserver((entries, observer) => {
@@ -2067,7 +2069,7 @@ function observeLazyImages() {
                     img.style.width = "";
                     img.style.aspectRatio = "";
                     img.style.objectFit = "";
-                    if (img.dataset.lazyRoot == "detailView") img.style.backgroundColor = "";
+                    // if (img.dataset.lazyRoot == "detailView") img.style.backgroundColor = "";
                 };
 
                 img.style.backgroundColor = "";
